@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="PaginationPro.Controler.Pagination"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PaginationPro.Controler" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" >
+    <Grid Background="White">
+        <!--#region 分页导航-->
+        <Grid Height="36" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="145"></ColumnDefinition>
+                <ColumnDefinition Width="134"></ColumnDefinition>
+                <ColumnDefinition Width="155"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="Total" Grid.Column="0" FontSize="16" Foreground="#FF666666" VerticalAlignment="Center" />
+            <Grid Grid.Column="1" HorizontalAlignment="Right">
+                <Button x:Name="Next" Background="{x:Null}" Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}"
+                                    BorderBrush="#FFD7DAE9" Foreground="#FFD7DAE9" Padding="0,0,0,0" Width="32" Height="32" HorizontalAlignment="Right" Cursor="Hand" Click="Next_Click">
+                    <Button.Content>
+                        <materialDesign:PackIcon Kind="ChevronRight" Width="32" Height="32" />
+                    </Button.Content>
+                </Button>
+                <Button x:Name="thisPath" Background="{x:Null}" Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}"
+                                    BorderBrush="#2d8cf0" Foreground="#2d8cf0" Padding="0,0,0,0" Width="32" Height="32"
+                                    Content="{Binding thisPath}" Margin="0,0,47,0" HorizontalAlignment="Right" Cursor="Hand" />
+                <Button x:Name="Pre" Background="{x:Null}" Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}"
+                                    BorderBrush="#FFD7DAE9" Foreground="#FFD7DAE9" Padding="0,0,0,0" Width="32" Height="32" HorizontalAlignment="Right" Margin="0,0,95,0" Click="Pre_Click" Cursor="Hand">
+                    <Button.Content>
+                        <materialDesign:PackIcon Kind="ChevronLeft" Width="32" Height="32" />
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <ComboBox     x:Name="slc"
+                          Grid.Column="2" Width="102"
+                          Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                          HorizontalAlignment="Right"
+                          VerticalAlignment="Stretch" Padding="10,0,15,0" FontSize="16" Foreground="#FF666666"
+                          VerticalContentAlignment="Center" 
+                          HorizontalContentAlignment="Center"
+                          BorderBrush="#FFD7DAE9" Background="{x:Null}" 
+                          SelectionChanged="slc_SelectionChanged" Cursor="Hand">
+                <ComboBoxItem Content="10条/页" />
+                <ComboBoxItem Content="20条/页" />
+                <ComboBoxItem Content="所有" />
+            </ComboBox>
+            <Grid Grid.Column="3" HorizontalAlignment="Right">
+                <TextBlock Text="页" FontSize="16" Foreground="#FF666666"
+                                       VerticalAlignment="Center" HorizontalAlignment="Right" />
+                <TextBox x:Name="Turn" Width="56" HorizontalAlignment="Right" Margin="0,0,28,0"
+                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                     Background="{x:Null}" BorderBrush="#FFD7DAE9"
+                                     CaretBrush="{x:Null}" SelectionBrush="{x:Null}"
+                                     Padding="0,0,0,0" FontSize="16"
+                                     HorizontalContentAlignment="Center" 
+                                     VerticalContentAlignment="Center" Cursor="Arrow" KeyDown="Turn_KeyDown" Loaded="Turn_Loaded" 
+                                     />
+                <TextBlock Text="跳至" FontSize="16" Foreground="#FF666666"
+                                       VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,105,0" />
+            </Grid>
+        </Grid>
+        <!--#endregion-->
+
+    </Grid>
+</UserControl>
